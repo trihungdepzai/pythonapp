@@ -44,12 +44,12 @@
      <rect>
       <x>170</x>
       <y>0</y>
-      <width>601</width>
+      <width>631</width>
       <height>541</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QLabel" name="label_7">
@@ -293,6 +293,7 @@ color: rgb(255, 0, 0)</string>
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="page_3"/>
     <widget class="QWidget" name="page_2">
      <widget class="QLineEdit" name="lineEdit">
       <property name="geometry">

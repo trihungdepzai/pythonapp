@@ -14,38 +14,13 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>-10</x>
-      <y>-40</y>
-      <width>851</width>
-      <height>561</height>
-     </rect>
-    </property>
-    <property name="autoFillBackground">
-     <bool>true</bool>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../../Downloads/landscape-8336497_1280.webp</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-    <property name="wordWrap">
-     <bool>false</bool>
-    </property>
-   </widget>
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>320</x>
       <y>0</y>
       <width>631</width>
-      <height>541</height>
+      <height>531</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -55,14 +30,14 @@
      <widget class="QLabel" name="label_7">
       <property name="geometry">
        <rect>
-        <x>140</x>
-        <y>0</y>
+        <x>90</x>
+        <y>10</y>
         <width>141</width>
         <height>51</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255); 
+       <string notr="true">color: rgb(255, 255, 255);
 font: 25pt &quot;Segoe Print&quot;;</string>
       </property>
       <property name="text">
@@ -72,10 +47,10 @@ font: 25pt &quot;Segoe Print&quot;;</string>
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
-        <x>290</x>
-        <y>0</y>
-        <width>71</width>
-        <height>71</height>
+        <x>230</x>
+        <y>10</y>
+        <width>51</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="autoFillBackground">
@@ -99,9 +74,9 @@ font: 25pt &quot;Segoe Print&quot;;</string>
       <property name="geometry">
        <rect>
         <x>60</x>
-        <y>80</y>
-        <width>271</width>
-        <height>51</height>
+        <y>120</y>
+        <width>261</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -111,7 +86,7 @@ font: 25pt &quot;Segoe Print&quot;;</string>
   border: 1px solid #B3B3B3; 
   border-radius: 20px; 
   background-color: transparent;
-  color: #FFFFFF; </string>
+  color: rgb(0, 0, 0)</string>
       </property>
       <property name="text">
        <string/>
@@ -126,31 +101,31 @@ font: 25pt &quot;Segoe Print&quot;;</string>
      <widget class="QLabel" name="label_8">
       <property name="geometry">
        <rect>
-        <x>80</x>
-        <y>50</y>
+        <x>60</x>
+        <y>90</y>
         <width>181</width>
         <height>21</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255); 
+       <string notr="true">color: rgb(255, 255, 255);
 font: 15pt &quot;Segoe Print&quot;;</string>
       </property>
       <property name="text">
-       <string>Email</string>
+       <string>Email:</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>130</y>
+        <x>60</x>
+        <y>160</y>
         <width>101</width>
         <height>31</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255); 
+       <string notr="true">color: rgb(255, 255, 255);
 font: 15pt &quot;Segoe Print&quot;;</string>
       </property>
       <property name="text">
@@ -161,9 +136,9 @@ font: 15pt &quot;Segoe Print&quot;;</string>
       <property name="geometry">
        <rect>
         <x>60</x>
-        <y>160</y>
-        <width>271</width>
-        <height>51</height>
+        <y>190</y>
+        <width>261</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -173,7 +148,7 @@ font: 15pt &quot;Segoe Print&quot;;</string>
   border: 1px solid #B3B3B3; 
   border-radius: 20px; 
   background-color: transparent;
-  color: #FFFFFF; </string>
+  color: rgb(0, 0, 0) </string>
       </property>
       <property name="text">
        <string/>
@@ -185,7 +160,7 @@ font: 15pt &quot;Segoe Print&quot;;</string>
      <widget class="QPushButton" name="pushButton_3">
       <property name="geometry">
        <rect>
-        <x>50</x>
+        <x>40</x>
         <y>390</y>
         <width>301</width>
         <height>61</height>
@@ -215,13 +190,13 @@ transition: all 0.3s ease; /* Hiệu ứng chuyển đổi */</string>
       <property name="geometry">
        <rect>
         <x>60</x>
-        <y>300</y>
+        <y>310</y>
         <width>111</width>
         <height>31</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255); 
+       <string notr="true">color: rgb(255, 255, 255);
 font: 15pt &quot;Segoe Print&quot;;</string>
       </property>
       <property name="text">
@@ -232,9 +207,9 @@ font: 15pt &quot;Segoe Print&quot;;</string>
       <property name="geometry">
        <rect>
         <x>60</x>
-        <y>330</y>
-        <width>271</width>
-        <height>51</height>
+        <y>340</y>
+        <width>261</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -244,7 +219,7 @@ font: 15pt &quot;Segoe Print&quot;;</string>
   border: 1px solid #B3B3B3; 
   border-radius: 20px; 
   background-color: transparent;
-  color: #FFFFFF; </string>
+  color: rgb(0, 0, 0)</string>
       </property>
       <property name="text">
        <string/>
@@ -256,7 +231,7 @@ font: 15pt &quot;Segoe Print&quot;;</string>
      <widget class="QPushButton" name="pushButton_4">
       <property name="geometry">
        <rect>
-        <x>40</x>
+        <x>10</x>
         <y>460</y>
         <width>271</width>
         <height>41</height>
@@ -264,10 +239,10 @@ font: 15pt &quot;Segoe Print&quot;;</string>
       </property>
       <property name="styleSheet">
        <string notr="true">padding: 10px;
-  font-size: 14px;
-  border-radius: 20px; 
-  background-color: transparent;
-  color: rgb(255, 255, 255);
+font-size: 14px;
+border-radius: 20px; 
+background-color: transparent;
+color:rgb(0, 0, 0);
 font: 9pt &quot;Segoe Print&quot;;</string>
       </property>
       <property name="text">
@@ -277,7 +252,7 @@ font: 9pt &quot;Segoe Print&quot;;</string>
      <widget class="QPushButton" name="pushButton_5">
       <property name="geometry">
        <rect>
-        <x>250</x>
+        <x>240</x>
         <y>470</y>
         <width>80</width>
         <height>24</height>
@@ -296,9 +271,9 @@ color: rgb(255, 0, 0)</string>
       <property name="geometry">
        <rect>
         <x>60</x>
-        <y>250</y>
-        <width>271</width>
-        <height>51</height>
+        <y>270</y>
+        <width>261</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -308,7 +283,7 @@ color: rgb(255, 0, 0)</string>
   border: 1px solid #B3B3B3; 
   border-radius: 20px; 
   background-color: transparent;
-  color: #FFFFFF; </string>
+  color: rgb(0, 0, 0)</string>
       </property>
       <property name="text">
        <string/>
@@ -321,19 +296,77 @@ color: rgb(255, 0, 0)</string>
       <property name="geometry">
        <rect>
         <x>60</x>
-        <y>210</y>
+        <y>230</y>
         <width>211</width>
         <height>31</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255); 
+       <string notr="true">color:rgb(255, 255, 255);
 font: 15pt &quot;Segoe Print&quot;;</string>
       </property>
       <property name="text">
        <string>Confirm Password:</string>
       </property>
      </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>361</width>
+        <height>471</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">height: 100%;
+    background-color: rgba(0, 0, 0,); /* Nền đen với độ trong suốt 50% */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+border-radius: 20px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>10</y>
+        <width>321</width>
+        <height>451</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Nền đen với độ trong suốt 50% */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+border-radius: 20px</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <zorder>label_14</zorder>
+     <zorder>label_12</zorder>
+     <zorder>label_7</zorder>
+     <zorder>label_5</zorder>
+     <zorder>lineEdit_3</zorder>
+     <zorder>label_8</zorder>
+     <zorder>label_9</zorder>
+     <zorder>lineEdit_4</zorder>
+     <zorder>pushButton_3</zorder>
+     <zorder>label_10</zorder>
+     <zorder>lineEdit_5</zorder>
+     <zorder>pushButton_4</zorder>
+     <zorder>pushButton_5</zorder>
+     <zorder>lineEdit_6</zorder>
+     <zorder>label_11</zorder>
     </widget>
     <widget class="QWidget" name="page_3"/>
     <widget class="QWidget" name="page_2">
@@ -341,9 +374,9 @@ font: 15pt &quot;Segoe Print&quot;;</string>
       <property name="geometry">
        <rect>
         <x>70</x>
-        <y>110</y>
+        <y>120</y>
         <width>271</width>
-        <height>51</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -353,7 +386,7 @@ font: 15pt &quot;Segoe Print&quot;;</string>
   border: 1px solid #B3B3B3; 
   border-radius: 20px; 
   background-color: transparent;
-  color: #FFFFFF; </string>
+  color: rgb(0, 0, 0)</string>
       </property>
       <property name="text">
        <string/>
@@ -403,9 +436,9 @@ font: 25pt &quot;Segoe Print&quot;;</string>
       <property name="geometry">
        <rect>
         <x>280</x>
-        <y>0</y>
-        <width>71</width>
-        <height>71</height>
+        <y>10</y>
+        <width>51</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="autoFillBackground">
@@ -431,7 +464,7 @@ font: 25pt &quot;Segoe Print&quot;;</string>
         <x>70</x>
         <y>220</y>
         <width>271</width>
-        <height>51</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -441,7 +474,7 @@ font: 25pt &quot;Segoe Print&quot;;</string>
   border: 1px solid #B3B3B3; 
   border-radius: 20px; 
   background-color: transparent;
-  color: #FFFFFF; </string>
+  color: rgb(0, 0, 0)</string>
       </property>
       <property name="text">
        <string/>
@@ -471,7 +504,7 @@ font: 15pt &quot;Segoe Print&quot;;</string>
       <property name="geometry">
        <rect>
         <x>60</x>
-        <y>290</y>
+        <y>300</y>
         <width>301</width>
         <height>61</height>
        </rect>
@@ -500,7 +533,7 @@ transition: all 0.3s ease; /* Hiệu ứng chuyển đổi */</string>
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>360</y>
+        <y>390</y>
         <width>271</width>
         <height>41</height>
        </rect>
@@ -510,7 +543,7 @@ transition: all 0.3s ease; /* Hiệu ứng chuyển đổi */</string>
   font-size: 14px;
   border-radius: 20px; 
   background-color: transparent;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 font: 9pt &quot;Segoe Print&quot;;</string>
       </property>
       <property name="text">
@@ -521,7 +554,7 @@ font: 9pt &quot;Segoe Print&quot;;</string>
       <property name="geometry">
        <rect>
         <x>230</x>
-        <y>370</y>
+        <y>400</y>
         <width>80</width>
         <height>24</height>
        </rect>
@@ -535,8 +568,75 @@ color: rgb(255, 0, 0)</string>
        <string>Sign Up</string>
       </property>
      </widget>
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>10</y>
+        <width>321</width>
+        <height>381</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Nền đen với độ trong suốt 50% */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+border-radius: 20px</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <zorder>label_13</zorder>
+     <zorder>lineEdit</zorder>
+     <zorder>label_2</zorder>
+     <zorder>label_6</zorder>
+     <zorder>label_3</zorder>
+     <zorder>lineEdit_2</zorder>
+     <zorder>label_4</zorder>
+     <zorder>pushButton</zorder>
+     <zorder>pushButton_2</zorder>
+     <zorder>pushButton_6</zorder>
     </widget>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>851</width>
+      <height>561</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Nền đen với độ trong suốt 50% */
+    display: flex;
+    justify-content: center;
+    align-items: center;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../../../Downloads/hinh-nen-slide-dep-chu-de-am-nhac-de-thuong.jpg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <zorder>label</zorder>
+   <zorder>stackedWidget</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

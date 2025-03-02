@@ -23,7 +23,7 @@ class MessageBox():
 
 class Login(QMainWindow):
     def __init__(self):
-        super().__init_()
+        super().__init__()
         uic.loadUi("ui/login.ui", self)
 
         self.email = self.findChild(QLineEdit, "txt_email")
@@ -60,10 +60,18 @@ class Login(QMainWindow):
         if user is not None:
             msg.success_box("Đăng nhập thành công")
             self.show_home(user["id"])
-        def show_home(self, user_id):
-            self.home = Home(user_id)
-            self.home.show()
-            self.close()
+        else:
+            msg.error_box("Sai email hoặc mật khẩu")
+
+    def show_register(self, user_id):
+        self.register = Register()
+        self.register.show()
+        self.close()
+    
+    def show_home(self, user_id):
+        self.home = Home(user_id)
+        self.home.show()
+        self.close()
 class Register(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -72,7 +80,7 @@ class Register(QMainWindow):
         self.name = self.findChild(QLineEdit, "txt_name")
         self.email = self.findChild(QLineEdit, "txt_email")
         self.password = self.findChild(QLineEdit, "txt_password")
-        self.confirm_password = self.findChild(QPushButton, "txt_conf_pwd")
+        self.confirm_password = self.findChild(QLineEdit, "txt_conf_pwd")
         self.btn_register = self.findChild(QPushButton, "btn_register")
         self.btn_login = self.findChild(QPushButton, "btn_login")
         self.btn_eye_p = self.findChild(QPushButton, "btn_eye_p")
@@ -81,7 +89,7 @@ class Register(QMainWindow):
         self.btn_register.clicked.connect(self.register)
         self.btn_login.clicked.connect(self.show_login)
         self.btn_eye_p.clicked.connect(lambda: self.hiddenOrShow(self.password, self.btn_eye_p))
-        self.btn_eye_cp.clicked.connect(lambda: self.hidden0rShow(self.confirm_password, self.btn_eye_cp))
+        self.btn_eye_cp.clicked.connect(lambda: self.hiddenOrShow(self.confirm_password, self.btn_eye_cp))
 
     def hiddenOrShow(self, input:QLineEdit, button:QPushButton):
         if input.echoMode() == QLineEdit.EchoMode.Password:

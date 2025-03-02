@@ -17,10 +17,10 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>320</x>
+      <x>310</x>
       <y>0</y>
       <width>631</width>
-      <height>531</height>
+      <height>571</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -70,7 +70,7 @@ font: 25pt &quot;Segoe Print&quot;;</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_3">
+     <widget class="QLineEdit" name="txt_email">
       <property name="geometry">
        <rect>
         <x>60</x>
@@ -129,10 +129,10 @@ font: 15pt &quot;Segoe Print&quot;;</string>
 font: 15pt &quot;Segoe Print&quot;;</string>
       </property>
       <property name="text">
-       <string>Password:</string>
+       <string>Name:</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_4">
+     <widget class="QLineEdit" name="txt_name">
       <property name="geometry">
        <rect>
         <x>60</x>
@@ -154,10 +154,10 @@ font: 15pt &quot;Segoe Print&quot;;</string>
        <string/>
       </property>
       <property name="placeholderText">
-       <string>Password</string>
+       <string>Name</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="btn_register">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -183,7 +183,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /*
 transition: all 0.3s ease; /* Hiệu ứng chuyển đổi */</string>
       </property>
       <property name="text">
-       <string>Finish</string>
+       <string>Sign Up</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_10">
@@ -191,7 +191,7 @@ transition: all 0.3s ease; /* Hiệu ứng chuyển đổi */</string>
        <rect>
         <x>60</x>
         <y>310</y>
-        <width>111</width>
+        <width>221</width>
         <height>31</height>
        </rect>
       </property>
@@ -200,10 +200,10 @@ transition: all 0.3s ease; /* Hiệu ứng chuyển đổi */</string>
 font: 15pt &quot;Segoe Print&quot;;</string>
       </property>
       <property name="text">
-       <string>Username:</string>
+       <string>Confirm password:</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_5">
+     <widget class="QLineEdit" name="txt_conf_pwd">
       <property name="geometry">
        <rect>
         <x>60</x>
@@ -224,36 +224,18 @@ font: 15pt &quot;Segoe Print&quot;;</string>
       <property name="text">
        <string/>
       </property>
+      <property name="echoMode">
+       <enum>QLineEdit::EchoMode::Password</enum>
+      </property>
       <property name="placeholderText">
-       <string>Username</string>
+       <string>Confirm Password</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_4">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>460</y>
-        <width>271</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">padding: 10px;
-font-size: 14px;
-border-radius: 20px; 
-background-color: transparent;
-color:rgb(0, 0, 0);
-font: 9pt &quot;Segoe Print&quot;;</string>
-      </property>
-      <property name="text">
-       <string>Have an account already? </string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_5">
+     <widget class="QPushButton" name="btn_login">
       <property name="geometry">
        <rect>
         <x>240</x>
-        <y>470</y>
+        <y>480</y>
         <width>80</width>
         <height>24</height>
        </rect>
@@ -267,7 +249,7 @@ color: rgb(255, 0, 0)</string>
        <string>Sign In</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_6">
+     <widget class="QLineEdit" name="txt_password">
       <property name="geometry">
        <rect>
         <x>60</x>
@@ -288,6 +270,9 @@ color: rgb(255, 0, 0)</string>
       <property name="text">
        <string/>
       </property>
+      <property name="echoMode">
+       <enum>QLineEdit::EchoMode::Password</enum>
+      </property>
       <property name="placeholderText">
        <string>Password</string>
       </property>
@@ -306,28 +291,7 @@ color: rgb(255, 0, 0)</string>
 font: 15pt &quot;Segoe Print&quot;;</string>
       </property>
       <property name="text">
-       <string>Confirm Password:</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_12">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>361</width>
-        <height>471</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">height: 100%;
-    background-color: rgba(0, 0, 0,); /* Nền đen với độ trong suốt 50% */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-border-radius: 20px;</string>
-      </property>
-      <property name="text">
-       <string/>
+       <string>Password:</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_14">
@@ -336,7 +300,7 @@ border-radius: 20px;</string>
         <x>30</x>
         <y>10</y>
         <width>321</width>
-        <height>451</height>
+        <height>461</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -352,21 +316,112 @@ border-radius: 20px</string>
        <string/>
       </property>
      </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>20</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: none;
+    border: none;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../img/corporate_Music-Flex-Icons-03.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_eye_cp">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>350</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+background: none</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../img/eye-slash-solid.svg</normaloff>../img/eye-slash-solid.svg</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>470</y>
+        <width>271</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">padding: 10px;
+font-size: 14px;
+border-radius: 20px; 
+background-color: transparent;
+color:rgb(0, 0, 0);
+font: 9pt &quot;Segoe Print&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Have an account already? </string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_eye_p">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>280</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+background: none</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../img/eye-slash-solid.svg</normaloff>../img/eye-slash-solid.svg</iconset>
+      </property>
+     </widget>
      <zorder>label_14</zorder>
-     <zorder>label_12</zorder>
      <zorder>label_7</zorder>
      <zorder>label_5</zorder>
-     <zorder>lineEdit_3</zorder>
+     <zorder>txt_email</zorder>
      <zorder>label_8</zorder>
      <zorder>label_9</zorder>
-     <zorder>lineEdit_4</zorder>
-     <zorder>pushButton_3</zorder>
+     <zorder>txt_name</zorder>
+     <zorder>btn_register</zorder>
      <zorder>label_10</zorder>
-     <zorder>lineEdit_5</zorder>
-     <zorder>pushButton_4</zorder>
-     <zorder>pushButton_5</zorder>
-     <zorder>lineEdit_6</zorder>
+     <zorder>txt_conf_pwd</zorder>
+     <zorder>btn_login</zorder>
+     <zorder>txt_password</zorder>
      <zorder>label_11</zorder>
+     <zorder>label_3</zorder>
+     <zorder>btn_eye_cp</zorder>
+     <zorder>pushButton_4</zorder>
+     <zorder>btn_eye_p</zorder>
     </widget>
     <widget class="QWidget" name="page_3"/>
    </widget>
@@ -394,7 +449,7 @@ border-radius: 20px</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../../../../Downloads/hinh-nen-slide-dep-chu-de-am-nhac-de-thuong.jpg</pixmap>
+     <pixmap>../img/hinh-nen-slide-dep-chu-de-am-nhac-de-thuong.jpg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -403,8 +458,30 @@ border-radius: 20px</string>
      <bool>false</bool>
     </property>
    </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>70</y>
+      <width>361</width>
+      <height>471</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">height: 100%;
+    background-color: rgba(0, 0, 0,); /* Nền đen với độ trong suốt 50% */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+border-radius: 20px;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>label</zorder>
    <zorder>stackedWidget</zorder>
+   <zorder>label_12</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

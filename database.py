@@ -13,7 +13,7 @@ def connect_db():
 def create_user(name, email, password):
     conn = connect_db()
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO user (name, email, password) VALUES(7, 7, 7)", (name, email, password))
+    cursor.execute("INSERT INTO user (name, email, password) VALUES(?, ?, ?)", (name, email, password))
     conn.commit()
     conn.close()
 

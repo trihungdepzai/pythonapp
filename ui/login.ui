@@ -28,7 +28,7 @@
     </property>
     <widget class="QWidget" name="page_3"/>
     <widget class="QWidget" name="page_2">
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="txt_email">
       <property name="geometry">
        <rect>
         <x>70</x>
@@ -93,8 +93,8 @@ font: 25pt &quot;Segoe Print&quot;;</string>
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>10</y>
+        <x>260</x>
+        <y>20</y>
         <width>51</width>
         <height>51</height>
        </rect>
@@ -110,13 +110,13 @@ font: 25pt &quot;Segoe Print&quot;;</string>
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>../../../../Downloads/corporate_Music-Flex-Icons-03.png</pixmap>
+       <pixmap>../img/corporate_Music-Flex-Icons-03.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="txt_password">
       <property name="geometry">
        <rect>
         <x>70</x>
@@ -136,6 +136,9 @@ font: 25pt &quot;Segoe Print&quot;;</string>
       </property>
       <property name="text">
        <string/>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::EchoMode::Password</enum>
       </property>
       <property name="placeholderText">
        <string>Password</string>
@@ -158,7 +161,7 @@ font: 15pt &quot;Segoe Print&quot;;</string>
        <string>Password:</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="btn_login">
       <property name="geometry">
        <rect>
         <x>60</x>
@@ -184,7 +187,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /*
 transition: all 0.3s ease; /* Hiệu ứng chuyển đổi */</string>
       </property>
       <property name="text">
-       <string>Finish</string>
+       <string>Sign In</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_2">
@@ -208,7 +211,7 @@ font: 9pt &quot;Segoe Print&quot;;</string>
        <string>Don't have an account?</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_6">
+     <widget class="QPushButton" name="btn_register">
       <property name="geometry">
        <rect>
         <x>230</x>
@@ -248,16 +251,38 @@ border-radius: 20px</string>
        <string/>
       </property>
      </widget>
+     <widget class="QPushButton" name="btn_eye_p">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>230</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+background: none</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../img/eye-slash-solid.svg</normaloff>../img/eye-slash-solid.svg</iconset>
+      </property>
+     </widget>
      <zorder>label_13</zorder>
-     <zorder>lineEdit</zorder>
+     <zorder>txt_email</zorder>
      <zorder>label_2</zorder>
      <zorder>label_6</zorder>
      <zorder>label_3</zorder>
-     <zorder>lineEdit_2</zorder>
+     <zorder>txt_password</zorder>
      <zorder>label_4</zorder>
-     <zorder>pushButton</zorder>
+     <zorder>btn_login</zorder>
      <zorder>pushButton_2</zorder>
-     <zorder>pushButton_6</zorder>
+     <zorder>btn_register</zorder>
+     <zorder>btn_eye_p</zorder>
     </widget>
    </widget>
    <widget class="QLabel" name="label">
@@ -284,7 +309,7 @@ border-radius: 20px</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../../../../Downloads/hinh-nen-slide-dep-chu-de-am-nhac-de-thuong.jpg</pixmap>
+     <pixmap>../img/hinh-nen-slide-dep-chu-de-am-nhac-de-thuong.jpg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>

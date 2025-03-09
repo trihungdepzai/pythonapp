@@ -2,9 +2,9 @@ import sqlite3
 
 def dict_factory(cursor, row):
     d = {}
-    for idx, col, in enumerate(cursor.description):
+    for idx, col in enumerate(cursor.description):
         d[col[0]] = row[idx]
-        return d
+    return d
 
 def connect_db():
     conn = sqlite3.connect('data/database.db')
@@ -41,5 +41,3 @@ def get_user_by_email_and_password(email, password):
     user = cursor.fetchone()
     conn.close()
     return user
-
-print(get_user_by_id(1))

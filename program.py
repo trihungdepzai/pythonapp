@@ -57,13 +57,14 @@ class Login(QMainWindow):
             self.password.setFocus()
             return
         user = get_user_by_email_and_password(email, password)
+        print(user)
         if user is not None:
             msg.success_box("Đăng nhập thành công")
             self.show_home(user["id"])
         else:
             msg.error_box("Sai email hoặc mật khẩu")
 
-    def show_register(self, user_id):
+    def show_register(self):
         self.register = Register()
         self.register.show()
         self.close()
@@ -153,7 +154,28 @@ class Home(QMainWindow):
         super().__init__()
         uic.loadUi("ui/home.ui", self)
 
+        self.main_widget = self.findChild(QStackedWidget, "main_widget")
+        self.btn_nav_home = self.findChild(QPushButton, "btn_nav_home")
+        self.btn_nav_account = self.findChild(QPushButton, "btn_nav_account")
+
+        self.btn_nav_home.clicked.connect(lambda: self.navMainScreen(0))
+        self.btn_nav_account.clicked.connect(lambda: self.navMainScreen(2))
+
         self.user_id = user_id
+        self.user = get_user_by_id(user_id)
+        self.loadAccountInfo()
+
+    def navMainScreen(self, index):
+        self.main_widget.setCurrentIndex(index)
+
+    def loadAccountInfo(self):
+        self.name = self.findChild(QLineEdit, "txt_name")
+        self.email = self.findChild(QLineEdit, "txt_email")
+
+        print(self.user)
+
+        self.name.setText(self.user["name"])
+        self.email.setText(self.user["email"])
 
 
 if __name__ == "__main__":

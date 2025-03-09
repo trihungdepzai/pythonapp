@@ -5,6 +5,7 @@ def dict_factory(cursor, row):
     for idx, col, in enumerate(cursor.description):
         d[col[0]] = row[idx]
         return d
+
 def connect_db():
     conn = sqlite3.connect('data/database.db')
     conn.row_factory = dict_factory
@@ -20,7 +21,7 @@ def create_user(name, email, password):
 def get_user_by_id(id):
     conn = connect_db()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM user WHERE id = ?", (id, ))
+    cursor.execute("SELECT id, name, email, password, gender FROM user WHERE id = ?", (id, ))
     user = cursor.fetchone()
     conn.close()
     return user

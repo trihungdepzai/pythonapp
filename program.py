@@ -18,7 +18,7 @@ class MessageBox():
         box = QMessageBox()
         box.setWindowTitle("Error")
         box.setText(message)
-        box.setIcon(MessageBox.Icon.Critical)
+        box.setIcon(QMessageBox.Icon.Critical)
         box.exec()
 
 class Login(QMainWindow):
@@ -45,8 +45,8 @@ class Login(QMainWindow):
             button.setIcon(QIcon("img/eye-slash-solid.svg"))
     def login(self):
         msg = MessageBox()
-        email = self.email.text()
-        password = self.password.text()
+        email = self.email.text().strip()
+        password = self.password.text().strip()
 
         if email =="":
             msg.error_box("Email không được để trống")
@@ -101,10 +101,10 @@ class Register(QMainWindow):
             button.setIcon(QIcon("img/eye-slash-solid.svg"))
     def register(self):
         msg = MessageBox()
-        name = self.name.text()
-        email = self.email.text()
-        password = self.password.text()
-        confirm_password = self.confirm_password.text()
+        name = self.name.text().strip()
+        email = self.email.text().strip()
+        password = self.password.text().strip()
+        confirm_password = self.confirm_password.text().strip()
 
         if name =="":
             msg.error_box("Họ tên không được để trống")
@@ -157,8 +157,10 @@ class Home(QMainWindow):
         self.main_widget = self.findChild(QStackedWidget, "main_widget")
         self.btn_nav_home = self.findChild(QPushButton, "btn_nav_home")
         self.btn_nav_account = self.findChild(QPushButton, "btn_nav_account")
+        self.btn_nav_playlist = self.findChild(QPushButton, "btn_nav_playlist")
 
         self.btn_nav_home.clicked.connect(lambda: self.navMainScreen(0))
+        self.btn_nav_playlist.clicked.connect(lambda: self.navMainScreen(1))
         self.btn_nav_account.clicked.connect(lambda: self.navMainScreen(2))
 
         self.user_id = user_id
@@ -171,8 +173,6 @@ class Home(QMainWindow):
     def loadAccountInfo(self):
         self.name = self.findChild(QLineEdit, "txt_name")
         self.email = self.findChild(QLineEdit, "txt_email")
-
-        print(self.user)
 
         self.name.setText(self.user["name"])
         self.email.setText(self.user["email"])

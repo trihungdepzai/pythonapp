@@ -11,10 +11,10 @@ def connect_db():
     conn.row_factory = dict_factory
     return conn
 
-def create_user(name, email, password):
+def create_user(name, email, password, avatar):
     conn = connect_db()
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO users (name, email, password) VALUES(?, ?, ?)", (name, email, password))
+    cursor.execute("INSERT INTO users (name, email, password, avatar) VALUES(?, ?, ?)", (name, email, password, avatar))
     conn.commit()
     conn.close()
 
@@ -34,10 +34,10 @@ def get_user_by_email(email):
     conn.close()
     return user
 
-def get_user_by_email_and_password(email, password):
+def get_user_by_email_and_password(email, password, ):
     conn = connect_db()
     cursor = conn.cursor()
-    cursor.execute("SELECT id, name, email, password, gender FROM users WHERE email = ? AND password = ?", (email, password))
+    cursor.execute("SELECT id, name, email, password, gender FROM users WHERE email = ? AND password = ?", (email, password,))
     user = cursor.fetchone()
     conn.close()
     return user

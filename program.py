@@ -163,27 +163,29 @@ class Home(QMainWindow):
 
         self.btn_avatar = self.findChild(QLabel, "btn_avatar" )
         self.btn_upload = self.findChild(QPushButton, "btn_upload")
-        self.btn_save = self.findChild(QPushButton, "btn_save")
+        # self.btn_save = self.findChild(QPushButton, "btn_save")
 
 
         self.btn_nav_home.clicked.connect(lambda: self.navMainScreen(0))
         self.btn_nav_playlist.clicked.connect(lambda: self.navMainScreen(1))
         self.btn_nav_account.clicked.connect(lambda: self.navMainScreen(2))
         self.btn_upload.clicked.connect(self.update_avatar)
-        self.btn_save.clicked.connect(self.save_profile)
-
-    
-        self.loadAccountInfo()
+        # self.btn_save.clicked.connect(self.save_profile)
+        # self.loadAccountInfo()
+        
 
     def navMainScreen(self, index):
         self.main_widget.setCurrentIndex(index)
 
     def loadAccountInfo(self):
-        self.name = self.findChild(QLineEdit, "txt_name")
-        self.email = self.findChild(QLineEdit, "txt_email")
+        self.txt_name = self.findChild(QLineEdit, "txt_name")
+        self.txt_email = self.findChild(QLineEdit, "txt_email")
 
-        self.name.setText(self.user["name"])
-        self.email.setText(self.user["email"])
+        self.txt_name.setText(self.user["name"])
+        self.txt_email.setText(self.user["email"])
+        self.btn_avatar.setPixmap(QPixmap(self.user["avatar"]))
+        if not self.user("avatar"):
+            self.btn_avatar.setPixmap(QPixmap("img/avatar.png"))
     
     def update_avatar(self):
         file,_ = QFileDialog.getOpenFileName(self, "Select Image","", "Image Files(*.jpg *.jpg *jpeg *.bmp)")

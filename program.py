@@ -57,7 +57,6 @@ class Login(QMainWindow):
             self.password.setFocus()
             return
         user = get_user_by_email_and_password(email, password)
-        print(user)
         if user is not None:
             msg.success_box("Đăng nhập thành công")
             self.show_home(user["id"])
@@ -154,17 +153,26 @@ class Home(QMainWindow):
         super().__init__()
         uic.loadUi("ui/home.ui", self)
 
+        self.user_id = user_id
+        self.user = get_user_by_id(user_id)
+
         self.main_widget = self.findChild(QStackedWidget, "main_widget")
         self.btn_nav_home = self.findChild(QPushButton, "btn_nav_home")
         self.btn_nav_account = self.findChild(QPushButton, "btn_nav_account")
         self.btn_nav_playlist = self.findChild(QPushButton, "btn_nav_playlist")
 
+        self.btn_avatar = self.findChild(QLabel, "btn_avatar" )
+        self.btn_upload = self.findChild(QPushButton, "btn_upload")
+        self.btn_save = self.findChild(QPushButton, "btn_save")
+
+
         self.btn_nav_home.clicked.connect(lambda: self.navMainScreen(0))
         self.btn_nav_playlist.clicked.connect(lambda: self.navMainScreen(1))
         self.btn_nav_account.clicked.connect(lambda: self.navMainScreen(2))
+        self.btn_upload.clicked.connect(self.update_avatar)
+        self.btn_save.clicked.connect(self.save_profile)
 
-        self.user_id = user_id
-        self.user = get_user_by_id(user_id)
+    
         self.loadAccountInfo()
 
     def navMainScreen(self, index):
@@ -176,6 +184,15 @@ class Home(QMainWindow):
 
         self.name.setText(self.user["name"])
         self.email.setText(self.user["email"])
+    
+    def update_avatar(self):
+        file,_ = QFileDialog.getOpenFileName(self, "Select Image","", "Image Files(*.jpg *.jpg *jpeg *.bmp)")
+        if file:
+            self.user["avatar"] = file
+            self.btn_avatar.setPixmap(QPixmap(file))
+            update_user_avatar(self.user_id, file)
+    
+
 
 
 if __name__ == "__main__":

@@ -28,7 +28,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="home">
      <widget class="QLineEdit" name="lineEdit_5">
@@ -176,7 +176,7 @@ font: 20pt &quot;Segoe Print&quot;;</string>
      <widget class="QLabel" name="label_18">
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>70</x>
         <y>270</y>
         <width>81</width>
         <height>16</height>
@@ -395,7 +395,7 @@ border-radius: 20px;</string>
      <widget class="QLabel" name="label_25">
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>70</x>
         <y>290</y>
         <width>121</width>
         <height>16</height>
@@ -1037,52 +1037,6 @@ background: white;
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QGroupBox" name="groupBox">
-      <property name="geometry">
-       <rect>
-        <x>260</x>
-        <y>360</y>
-        <width>241</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>Gender</string>
-      </property>
-      <widget class="QWidget" name="horizontalLayoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>20</y>
-         <width>183</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <item>
-         <widget class="QRadioButton" name="radioButton">
-          <property name="text">
-           <string>Male</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="radioButton_2">
-          <property name="text">
-           <string>Female</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="radioButton_3">
-          <property name="text">
-           <string>Other</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </widget>
      <zorder>label_8</zorder>
      <zorder>label_4</zorder>
      <zorder>txt_name</zorder>
@@ -1095,7 +1049,6 @@ background: white;
      <zorder>comboBox</zorder>
      <zorder>dateEdit</zorder>
      <zorder>btn_avatar</zorder>
-     <zorder>groupBox</zorder>
     </widget>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -1326,81 +1279,112 @@ background: none
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>30</y>
+      <y>40</y>
       <width>41</width>
       <height>151</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QPushButton" name="btn_nav_home">
-       <property name="maximumSize">
-        <size>
-         <width>30</width>
-         <height>30</height>
-        </size>
-       </property>
+      <widget class="QFrame" name="frame">
        <property name="styleSheet">
-        <string notr="true">background: white;
+        <string notr="true">background-color: none</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Shape::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Shadow::Raised</enum>
+       </property>
+       <widget class="QPushButton" name="btn_nav_playlist">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>100</y>
+          <width>30</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background: white;
  border-radius: 15px
 </string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>../img/house-solid.svg</normaloff>../img/house-solid.svg</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btn_nav_account">
-       <property name="maximumSize">
-        <size>
-         <width>30</width>
-         <height>30</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background: white;
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../img/list-solid123.svg</normaloff>../img/list-solid123.svg</iconset>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_nav_home">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>50</y>
+          <width>30</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background: white;
+ border-radius: 15px
+</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../img/house-solid.svg</normaloff>../img/house-solid.svg</iconset>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_nav_account">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>30</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background: white;
  border-radius: 15px;</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>../img/user-solid.svg</normaloff>../img/user-solid.svg</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>16</width>
-         <height>16</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btn_nav_playlist">
-       <property name="maximumSize">
-        <size>
-         <width>30</width>
-         <height>30</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background: white;
- border-radius: 15px
-</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>../img/list-solid123.svg</normaloff>../img/list-solid123.svg</iconset>
-       </property>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../img/user-solid.svg</normaloff>../img/user-solid.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+       </widget>
       </widget>
      </item>
     </layout>

@@ -17,7 +17,7 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>320</x>
+      <x>330</x>
       <y>0</y>
       <width>631</width>
       <height>531</height>
@@ -28,51 +28,6 @@
     </property>
     <widget class="QWidget" name="page_3"/>
     <widget class="QWidget" name="page_2">
-     <widget class="QLineEdit" name="txt_email">
-      <property name="geometry">
-       <rect>
-        <x>70</x>
-        <y>120</y>
-        <width>271</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #B3B3B3; 
-  border-radius: 20px; 
-  background-color: transparent;
-  color: rgb(0, 0, 0)</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="dragEnabled">
-       <bool>true</bool>
-      </property>
-      <property name="placeholderText">
-       <string>Email/Username</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_2">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>70</y>
-        <width>201</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255); 
-font: 15pt &quot;Segoe Print&quot;;</string>
-      </property>
-      <property name="text">
-       <string>Email/Username:</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
@@ -116,119 +71,6 @@ font: 25pt &quot;Segoe Print&quot;;</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLineEdit" name="txt_password">
-      <property name="geometry">
-       <rect>
-        <x>70</x>
-        <y>220</y>
-        <width>271</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #B3B3B3; 
-  border-radius: 20px; 
-  background-color: transparent;
-  color: rgb(0, 0, 0)</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="echoMode">
-       <enum>QLineEdit::EchoMode::Password</enum>
-      </property>
-      <property name="placeholderText">
-       <string>Password</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_4">
-      <property name="geometry">
-       <rect>
-        <x>70</x>
-        <y>180</y>
-        <width>101</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255); 
-font: 15pt &quot;Segoe Print&quot;;</string>
-      </property>
-      <property name="text">
-       <string>Password:</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_login">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>300</y>
-        <width>301</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background: qlineargradient( spread: pad, x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #fff9b0, stop: 1 #041f60 );
-font: 9pt &quot;Segoe Print&quot;;
-border: 2px solid #8A2BE2; /* Viền màu tím nhạt hơn */
- color: white; /* Màu chữ trắng */
- padding: 10px 20px; 
-text-align: center; 
-text-decoration: none; 
-display: inline-block;
- font-size: 16px; 
-margin: 4px 2px; 
-cursor: pointer;
-border-radius: 20px; /* Cạnh bo tròn */ 
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /* Đổ bóng */
-transition: all 0.3s ease; /* Hiệu ứng chuyển đổi */</string>
-      </property>
-      <property name="text">
-       <string>Sign In</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>390</y>
-        <width>271</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">padding: 10px;
-  font-size: 14px;
-  border-radius: 20px; 
-  background-color: transparent;
-  color: rgb(0, 0, 0);
-font: 9pt &quot;Segoe Print&quot;;</string>
-      </property>
-      <property name="text">
-       <string>Don't have an account?</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_register">
-      <property name="geometry">
-       <rect>
-        <x>230</x>
-        <y>400</y>
-        <width>80</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-radius: 15px;
-font: 9pt &quot;Segoe Print&quot;;
-color: rgb(255, 0, 0)</string>
-      </property>
-      <property name="text">
-       <string>Sign Up</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_13">
       <property name="geometry">
        <rect>
@@ -254,7 +96,7 @@ border-radius: 20px</string>
      <widget class="QPushButton" name="btn_eye_p">
       <property name="geometry">
        <rect>
-        <x>280</x>
+        <x>300</x>
         <y>230</y>
         <width>80</width>
         <height>24</height>
@@ -272,17 +114,156 @@ background: none</string>
         <normaloff>../img/eye-slash-solid.svg</normaloff>../img/eye-slash-solid.svg</iconset>
       </property>
      </widget>
+     <widget class="QWidget" name="verticalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>90</y>
+        <width>281</width>
+        <height>361</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255); 
+font: 15pt &quot;Segoe Print&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Email:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="txt_email">
+         <property name="styleSheet">
+          <string notr="true">width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #B3B3B3; 
+  border-radius: 20px; 
+  background-color: transparent;
+  color: rgb(0, 0, 0)</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="dragEnabled">
+          <bool>true</bool>
+         </property>
+         <property name="placeholderText">
+          <string>Email/Username</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255); 
+font: 15pt &quot;Segoe Print&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Password:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="txt_password">
+         <property name="styleSheet">
+          <string notr="true">width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #B3B3B3; 
+  border-radius: 20px; 
+  background-color: transparent;
+  color: rgb(0, 0, 0)</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="echoMode">
+          <enum>QLineEdit::EchoMode::Password</enum>
+         </property>
+         <property name="placeholderText">
+          <string>Password</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_login">
+         <property name="styleSheet">
+          <string notr="true">background: qlineargradient( spread: pad, x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #fff9b0, stop: 1 #041f60 );
+font: 9pt &quot;Segoe Print&quot;;
+border: 2px solid #8A2BE2; /* Viền màu tím nhạt hơn */
+ color: white; /* Màu chữ trắng */
+ padding: 10px 20px; 
+text-align: center; 
+text-decoration: none; 
+display: inline-block;
+ font-size: 16px; 
+margin: 4px 2px; 
+cursor: pointer;
+border-radius: 20px; /* Cạnh bo tròn */ 
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /* Đổ bóng */
+transition: all 0.3s ease; /* Hiệu ứng chuyển đổi */</string>
+         </property>
+         <property name="text">
+          <string>Sign In</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QPushButton" name="pushButton_2">
+           <property name="styleSheet">
+            <string notr="true">padding: 10px;
+  font-size: 14px;
+  border-radius: 20px; 
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+font: 9pt &quot;Segoe Print&quot;;</string>
+           </property>
+           <property name="text">
+            <string>Don't have an account?</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_register">
+           <property name="styleSheet">
+            <string notr="true">border-radius: 15px;
+font: 9pt &quot;Segoe Print&quot;;
+color: rgb(255, 0, 0)</string>
+           </property>
+           <property name="text">
+            <string>Sign Up</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
      <zorder>label_13</zorder>
-     <zorder>txt_email</zorder>
-     <zorder>label_2</zorder>
      <zorder>label_6</zorder>
      <zorder>label_3</zorder>
-     <zorder>txt_password</zorder>
-     <zorder>label_4</zorder>
-     <zorder>btn_login</zorder>
-     <zorder>pushButton_2</zorder>
-     <zorder>btn_register</zorder>
      <zorder>btn_eye_p</zorder>
+     <zorder>verticalLayoutWidget</zorder>
     </widget>
    </widget>
    <widget class="QLabel" name="label">

@@ -11,10 +11,10 @@ def connect_db():
     conn.row_factory = dict_factory
     return conn
 
-def create_user(name, email, password, avatar):
+def create_user(name, email, password):
     conn = connect_db()
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO users (name, email, password, avatar) VALUES(?, ?, ?)", (name, email, password, avatar))
+    cursor.execute("INSERT INTO users (name, email, password) VALUES(?, ?, ?)", (name, email, password))
     conn.commit()
     conn.close()
 
@@ -29,7 +29,7 @@ def get_user_by_id(id):
 def get_user_by_email(email):
     conn = connect_db()
     cursor = conn.cursor()
-    cursor.execute("SELECT id, name, email, password, gender FROM users WHERE email = ?", (email,))
+    cursor.execute("SELECT id, name, email, password, gender, birthday, avatar FROM users WHERE email = ?", (email,))
     user = cursor.fetchone()
     conn.close()
     return user
@@ -37,7 +37,7 @@ def get_user_by_email(email):
 def get_user_by_email_and_password(email, password, ):
     conn = connect_db()
     cursor = conn.cursor()
-    cursor.execute("SELECT id, name, email, password, gender FROM users WHERE email = ? AND password = ?", (email, password,))
+    cursor.execute("SELECT id, name, email, password, gender, birthday, avatar FROM users WHERE email = ? AND password = ?", (email, password,))
     user = cursor.fetchone()
     conn.close()
     return user
@@ -46,7 +46,7 @@ def update_user_avatar(user_id, avatar):
     conn = connect_db()
     cursor = conn.cursor()
     cursor.row_factory = dict_factory
-    cursor.execute('UPDATE users SET avatar = ? WHERE id = ?', (user_id, avatar))
+    cursor.execute('UPDATE users SET avatar = ? WHERE id = ?', (avatar, user_id))
     conn.commit()
     conn.close()
 
@@ -54,8 +54,6 @@ def update_user(user_id, name, gender, birthday):
     conn = connect_db()
     cursor = conn.cursor()
     cursor.row_factory = dict_factory
-    cursor.execute('UPDATE users SET name = ?, gender = ?, birthday = ?  WHERE id = ?',) (name, gender, birthday, user_id,)
+    cursor.execute('UPDATE users SET name = ?, gender = ?, birthday = ?  WHERE id = ?', (name, gender, birthday, user_id))
     conn.commit()
     conn.close()
-print(get_user_by_id(2))
-print(get_user_by_email("hellu@gmail.com"))

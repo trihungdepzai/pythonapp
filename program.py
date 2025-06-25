@@ -153,25 +153,27 @@ class Home(QMainWindow):
         super().__init__()
         uic.loadUi("ui/home.ui", self)
 
+        self.msg = MessageBox()
+
         self.user_id = user_id
         self.user = get_user_by_id(user_id)
+        self.loadAccountInfo()
 
         self.main_widget = self.findChild(QStackedWidget, "main_widget")
         self.btn_nav_home = self.findChild(QPushButton, "btn_nav_home")
         self.btn_nav_account = self.findChild(QPushButton, "btn_nav_account")
         self.btn_nav_playlist = self.findChild(QPushButton, "btn_nav_playlist")
+        self.lb_avatar = self.findChild(QLabel, "lb_avatar")
 
-    
         self.btn_upload = self.findChild(QPushButton, "btn_upload")
         self.btn_save = self.findChild(QPushButton, "btn_save")
         
-
-
         self.btn_nav_home.clicked.connect(lambda: self.navMainScreen(0))
         self.btn_nav_playlist.clicked.connect(lambda: self.navMainScreen(1))
         self.btn_nav_account.clicked.connect(lambda: self.navMainScreen(2))
         self.btn_upload.clicked.connect(self.update_avatar)
         self.btn_save.clicked.connect(self.save_account_info)
+
     def navMainScreen(self, index):
         self.main_widget.setCurrentIndex(index)
 
@@ -180,32 +182,41 @@ class Home(QMainWindow):
         self.txt_email = self.findChild(QLineEdit, "txt_email")
         self.txt_gender = self.findChild(QComboBox, "txt_gender")
         self.txt_dob = self.findChild(QDateEdit, "txt_dob")
+        self.txt_dob.setDisplayFormat("dd-MM-yyyy")
         self.txt_name.setText(self.user["name"])
         self.txt_email.setText(self.user["email"])
-        self.txt_dob.setText(self.user["birthday"])
+        self.txt_dob.setDate(QDate.fromString(self.user["birthday"], "dd-MM-yyyy"))
+        
         if self.user["avatar"]:
-            # self.btn_avatar.setIcon(QIcon("avatar"))
-            self.avatar.pixmap(QPixmap("avatar"))
+            self.lb_avatar.setPixmap(QPixmap(self.user["avatar"]))
+        
+        if not self.user["gender"]:
+            self.txt_gender.setCurrentIndex(0)
+        elif self.user["gender"] == "Male":
+            self.txt_gender.setCurrentIndex(1)
+        elif self.user["gender"] == "Female":
+            self.txt_gender.setCurrentIndex(2)
+        else:
+            self.txt_gender.setCurrentIndex(3)
+
     
     def update_avatar(self):
-        file,_ = QFileDialog.getOpenFileName(self, "Select Image","", "Image Files(*.jpg *.jpg *jpeg *.bmp)")
+        file,_ = QFileDialog.getOpenFileName(self, "Select Image","", "Image Files(*.png *.jpg *jpeg *.bmp)")
         if file:
             self.user["avatar"] = file
-            self.btn_avatar.setPixmap(QPixmap(file))
+            self.lb_avatar.setPixmap(QPixmap(file))
             update_user_avatar(self.user_id, file)
+
     def save_account_info(self):
         name = self.txt_name.text().strip()
         dob = self.txt_dob.date().toString("dd-MM-yyyy")
         gender = self.txt_gender.currentText()
         update_user(self.user_id, name, gender, dob)
-    
-
-    
-
-
+        self.msg.success_box("Cập nhật thông tin thành công")
 
 if __name__ == "__main__":
     app = QApplication([])
     login = Login()
+    login = Home(1)
     login.show()
     app.exec()

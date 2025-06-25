@@ -28,7 +28,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="home">
      <widget class="QLineEdit" name="lineEdit_5">
@@ -508,7 +508,7 @@ background: none</string>
         <x>90</x>
         <y>150</y>
         <width>491</width>
-        <height>291</height>
+        <height>336</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1012,8 +1012,11 @@ background-color: rgb(255, 255, 255);
 background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0)</string>
       </property>
+      <property name="displayFormat">
+       <string>d/M/yy</string>
+      </property>
      </widget>
-     <widget class="QLabel" name="btn_avatar">
+     <widget class="QLabel" name="lb_avatar">
       <property name="geometry">
        <rect>
         <x>620</x>
@@ -1061,7 +1064,7 @@ background: white;
      <zorder>label_12</zorder>
      <zorder>txt_gender</zorder>
      <zorder>txt_dob</zorder>
-     <zorder>btn_avatar</zorder>
+     <zorder>lb_avatar</zorder>
      <zorder>btn_save</zorder>
     </widget>
    </widget>

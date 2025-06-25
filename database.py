@@ -21,7 +21,7 @@ def create_user(name, email, password, avatar):
 def get_user_by_id(id):
     conn = connect_db()
     cursor = conn.cursor()
-    cursor.execute("SELECT id, name, email, password, gender FROM users WHERE id = ?", (id, ))
+    cursor.execute("SELECT id, name, email, password, gender, birthday, avatar FROM users WHERE id = ?", (id, ))
     user = cursor.fetchone()
     conn.close()
     return user
@@ -50,11 +50,12 @@ def update_user_avatar(user_id, avatar):
     conn.commit()
     conn.close()
 
-def update_user(user_id, name, gender):
+def update_user(user_id, name, gender, birthday):
     conn = connect_db()
-    cursor = conn.cursor
+    cursor = conn.cursor()
     cursor.row_factory = dict_factory
-    cursor.execute('UPDATE users SET name = ?, gender = ? WHERE id = ?', (name, gender, user_id))
-
+    cursor.execute('UPDATE users SET name = ?, gender = ?, birthday = ?  WHERE id = ?',) (name, gender, birthday, user_id,)
+    conn.commit()
+    conn.close()
 print(get_user_by_id(2))
 print(get_user_by_email("hellu@gmail.com"))

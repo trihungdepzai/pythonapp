@@ -161,28 +161,30 @@ class Home(QMainWindow):
         self.btn_nav_account = self.findChild(QPushButton, "btn_nav_account")
         self.btn_nav_playlist = self.findChild(QPushButton, "btn_nav_playlist")
 
-        self.btn_avatar = self.findChild(QLabel, "btn_avatar" )
+    
         self.btn_upload = self.findChild(QPushButton, "btn_upload")
+        self.btn_save = self.findChild(QPushButton, "btn_save")
+        
 
 
         self.btn_nav_home.clicked.connect(lambda: self.navMainScreen(0))
         self.btn_nav_playlist.clicked.connect(lambda: self.navMainScreen(1))
         self.btn_nav_account.clicked.connect(lambda: self.navMainScreen(2))
         self.btn_upload.clicked.connect(self.update_avatar)
-        
-
+        self.btn_save.clicked.connect(self.save_account_info)
     def navMainScreen(self, index):
         self.main_widget.setCurrentIndex(index)
 
     def loadAccountInfo(self):
         self.txt_name = self.findChild(QLineEdit, "txt_name")
         self.txt_email = self.findChild(QLineEdit, "txt_email")
-
+        self.txt_gender = self.findChild(QComboBox, "txt_gender")
+        self.txt_dob = self.findChild(QDateEdit, "txt_dob")
         self.txt_name.setText(self.user["name"])
         self.txt_email.setText(self.user["email"])
-        self.btn_avatar.setPixmap(QPixmap(self.user["avatar"]))
-        if not self.user_ == ["avatar"]:
-            self.btn_avatar.setIcon(QIcon("avatar"))
+        self.txt_dob.setText(self.user["birthday"])
+        if self.user["avatar"]:
+            # self.btn_avatar.setIcon(QIcon("avatar"))
             self.avatar.pixmap(QPixmap("avatar"))
     
     def update_avatar(self):
@@ -191,6 +193,13 @@ class Home(QMainWindow):
             self.user["avatar"] = file
             self.btn_avatar.setPixmap(QPixmap(file))
             update_user_avatar(self.user_id, file)
+    def save_account_info(self):
+        name = self.txt_name.text().strip()
+        dob = self.txt_dob.date().toString("dd-MM-yyyy")
+        gender = self.txt_gender.currentText()
+        update_user(self.user_id, name, gender, dob)
+    
+
     
 
 

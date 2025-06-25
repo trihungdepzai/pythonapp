@@ -28,7 +28,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="home">
      <widget class="QLineEdit" name="lineEdit_5">
@@ -778,8 +778,8 @@ background: none</string>
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>30</y>
+        <x>470</x>
+        <y>20</y>
         <width>151</width>
         <height>51</height>
        </rect>
@@ -893,7 +893,7 @@ background-color: rgb(255, 255, 255);
      <widget class="QLabel" name="label_8">
       <property name="geometry">
        <rect>
-        <x>0</x>
+        <x>10</x>
         <y>20</y>
         <width>1001</width>
         <height>471</height>
@@ -955,7 +955,7 @@ background-color: none;
        <string>Gender:</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox">
+     <widget class="QComboBox" name="txt_gender">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -994,7 +994,7 @@ background-color: rgb(255, 255, 255);
        </property>
       </item>
      </widget>
-     <widget class="QDateEdit" name="dateEdit">
+     <widget class="QDateEdit" name="txt_dob">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -1037,6 +1037,19 @@ background: white;
        <bool>true</bool>
       </property>
      </widget>
+     <widget class="QPushButton" name="btn_save">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>370</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Save</string>
+      </property>
+     </widget>
      <zorder>label_8</zorder>
      <zorder>label_4</zorder>
      <zorder>txt_name</zorder>
@@ -1046,9 +1059,10 @@ background: white;
      <zorder>txt_email</zorder>
      <zorder>btn_upload</zorder>
      <zorder>label_12</zorder>
-     <zorder>comboBox</zorder>
-     <zorder>dateEdit</zorder>
+     <zorder>txt_gender</zorder>
+     <zorder>txt_dob</zorder>
      <zorder>btn_avatar</zorder>
+     <zorder>btn_save</zorder>
     </widget>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -1275,7 +1289,7 @@ background: none
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="verticalLayoutWidget">
+   <widget class="QWidget" name="verticalWidget" native="true">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -1284,107 +1298,79 @@ background: none
       <height>151</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: none</string>
+    </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QFrame" name="frame">
+      <widget class="QPushButton" name="btn_nav_account">
+       <property name="maximumSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
        <property name="styleSheet">
-        <string notr="true">background-color: none</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
-       </property>
-       <widget class="QPushButton" name="btn_nav_playlist">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>100</y>
-          <width>30</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>30</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background: white;
- border-radius: 15px
-</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>../img/list-solid123.svg</normaloff>../img/list-solid123.svg</iconset>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_nav_home">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>50</y>
-          <width>30</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>30</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background: white;
- border-radius: 15px
-</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>../img/house-solid.svg</normaloff>../img/house-solid.svg</iconset>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="btn_nav_account">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>30</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>30</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background: white;
+        <string notr="true">background: white;
  border-radius: 15px;</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>../img/user-solid.svg</normaloff>../img/user-solid.svg</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>16</width>
-          <height>16</height>
-         </size>
-        </property>
-       </widget>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../img/user-solid.svg</normaloff>../img/user-solid.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_nav_home">
+       <property name="maximumSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background: white;
+ border-radius: 15px
+</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../img/house-solid.svg</normaloff>../img/house-solid.svg</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_nav_playlist">
+       <property name="maximumSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background: white;
+ border-radius: 15px
+</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../img/list-solid123.svg</normaloff>../img/list-solid123.svg</iconset>
+       </property>
       </widget>
      </item>
     </layout>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1133</width>
-    <height>626</height>
+    <width>1080</width>
+    <height>625</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -31,51 +31,6 @@
      <number>0</number>
     </property>
     <widget class="QWidget" name="home">
-     <widget class="QLineEdit" name="lineEdit_5">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>10</y>
-        <width>371</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #B3B3B3; 
-  border-radius: 15px; 
-  background-color: transparent;
-  color: rgb(0, 0, 0)</string>
-      </property>
-      <property name="frame">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>20</y>
-        <width>20</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background: none;
-border: none;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap>../img/magnifying-glass-solid.svg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
@@ -98,9 +53,9 @@ font: 20pt &quot;Segoe Print&quot;;</string>
       <property name="geometry">
        <rect>
         <x>50</x>
-        <y>120</y>
-        <width>141</width>
-        <height>141</height>
+        <y>150</y>
+        <width>111</width>
+        <height>111</height>
        </rect>
       </property>
       <property name="text">
@@ -371,15 +326,15 @@ background-color: none
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>50</y>
+        <y>20</y>
         <width>981</width>
-        <height>441</height>
+        <height>471</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(45, 45, 45); /* Màu đen */
-    height: 50px; /* Chiều cao của thanh */
-    width: 100%; /* Chiều rộng của thanh */
+       <string notr="true">background-color: rgb(45, 45, 45);
+    height: 50px; 
+    width: 100%; 
 border-radius: 20px;</string>
       </property>
       <property name="text">
@@ -410,9 +365,61 @@ background-color: none
        <string>Erik</string>
       </property>
      </widget>
+     <widget class="QWidget" name="horizontalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>30</y>
+        <width>351</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: none;
+border: none;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>../img/magnifying-glass-solid.svg</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_5">
+         <property name="styleSheet">
+          <string notr="true">width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #B3B3B3; 
+  border-radius: 15px; 
+  background-color: transparent;
+  color: rgb(0, 0, 0)</string>
+         </property>
+         <property name="frame">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
      <zorder>label_13</zorder>
-     <zorder>lineEdit_5</zorder>
-     <zorder>label</zorder>
      <zorder>label_3</zorder>
      <zorder>label_14</zorder>
      <zorder>label_15</zorder>
@@ -430,6 +437,7 @@ background-color: none
      <zorder>label_30</zorder>
      <zorder>label_31</zorder>
      <zorder>label_25</zorder>
+     <zorder>horizontalLayoutWidget</zorder>
     </widget>
     <widget class="QWidget" name="playlist">
      <widget class="QLabel" name="label_27">
@@ -1078,9 +1086,9 @@ background: white;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(40, 40, 40); /* Màu đen */
-    height: 50px; /* Chiều cao của thanh */
-    width: 100%; /* Chiều rộng của thanh */
+     <string notr="true">background-color: rgb(40, 40, 40);
+    height: 50px; 
+    width: 100%;
 border-radius: 20px;</string>
     </property>
     <property name="text">
@@ -1295,10 +1303,10 @@ background: none
    <widget class="QWidget" name="verticalWidget" native="true">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>40</y>
-      <width>41</width>
-      <height>151</height>
+      <x>10</x>
+      <y>20</y>
+      <width>71</width>
+      <height>161</height>
      </rect>
     </property>
     <property name="styleSheet">

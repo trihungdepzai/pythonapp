@@ -147,7 +147,13 @@ class Register(QMainWindow):
         self.login = Login()
         self.login.show()
         self.close()
-        
+class Item(Widget):
+    def __init__(self):
+        self.bt_start = self.findChild(QPushButton,'bt_start')
+        self.bt_like = self.findChild(QPushButton,'bt_like')
+        self.lb_pic = self.findChild(QLabel,'lb_pic')
+        self.lb_songname = self.findChild(QLabel, 'lb_songname')
+        self.lb_athname = self.findChild(QLabel, 'lb_athname')     
 class Home(QMainWindow):
     def __init__(self, user_id):
         super().__init__()

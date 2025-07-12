@@ -219,6 +219,164 @@ class Home(QMainWindow):
         gender = self.txt_gender.currentText()
         update_user(self.user_id, name, gender, dob)
         self.msg.success_box("Cập nhật thông tin thành công")
+        
+    def render_song_list(self, song_list:list):
+        # clear the grid layout
+        for i in reversed(range(self.song_layout.count())):
+            widgetToRemove = self.song_layout.itemAt(i).widget()
+            self.song_layout.removeWidget(widgetToRemove)
+            widgetToRemove.setParent(None)
+            
+        row = 0
+        column = 0
+        for song in song_list:
+            # Create widget in song list mode (Add button only)
+            itemWidget = SongItemWidget(song["id"], song["name"], song["image_path"].replace("/", "\\"), song["artist_names"], is_playlist_mode=False)
+            itemWidget.setFixedSize(400, 80)  # Set fixed size for each item
+            itemWidget.play_song.connect(self.play_song)
+            itemWidget.add_song_to_playlist.connect(self.add_to_playlist)
+            self.song_layout.addWidget(itemWidget, row, column)
+            column += 1
+            if column == 2:  # Show 2 columns
+                column = 0
+                row += 1
+        
+    def search_song(self):
+        name = self.txt_search.text()
+        song_list = database.get_songs_by_name(name)
+        self.render_song_list(song_list)
+        
+    def play_song(self, song_id):
+        # Always refresh the playlist when playing a song
+        self.current_playlist = database.get_user_playlist_songs(self.user_id)
+        
+        # Find the song in the current playlist
+        self.current_song_index = -1  # Reset index
+        for i, song in enumerate(self.current_playlist):
+            if str(song['id']) == str(song_id):
+                self.current_song_index = i
+                break
+        
+        self.current_song = song_id
+        song = database.get_song_by_id(song_id)
+        file_path = QUrl.fromLocalFile(song["file_path"].replace("/", "\\"))
+        self.player.setSource(file_path)
+        self.player.play()
+        
+        if self.playBtn and self.pauseIcon:
+            self.playBtn.setIcon(self.pauseIcon)
+        elif self.playBtn:
+            self.playBtn.setText("Pause")
+        
+        self.curr_name.setText(f"Now playing: {song['name']}")
+        self.curr_img.setPixmap(QPixmap(song["image_path"].replace("/", "\\")))
+        self.curr_artist.setText(f"Artist: {song['artist_names']}")
+        
+    def handle_player_error(self, error, error_string):
+        print(f"Media player error: {error} - {error_string}")
+        
+    def mediaStateChanged(self):
+        if self.player.playbackState() == QMediaPlayer.PlaybackState.PlayingState:
+            self.playBtn.setIcon(self.pauseIcon)
+        else:
+            self.playBtn.setIcon(self.playIcon)
+
+    def positionChanged(self, position):
+        self.durationBar.setValue(position)
+        # Convert position and duration from milliseconds to hh:mm:ss format
+        current_time = self.formatTime(position)
+        total_time = self.formatTime(self.player.duration())
+        self.timeLabel.setText(f"{current_time}/{total_time}")
+        
+    def durationChanged(self, duration):
+        self.durationBar.setRange(0, duration)
+    
+    def handleError(self):
+        self.playBtn.setEnabled(False)
+        error_message = self.player.errorString()
+        self.playBtn.setText(f"Error: {error_message}")
+        print(f"Media Player Error: {error_message}")
+        
+    def play(self):
+        if self.player.playbackState() == QMediaPlayer.PlaybackState.PlayingState:
+            self.player.pause()
+        else:
+            self.player.play()
+    
+    def setPosition(self, position):
+        if self.player.duration() > 0:  # Only set position if media is loaded
+            self.player.setPosition(position)
+        
+    def setVolume(self, volume):
+        # Convert the slider value to a float between 0.0 and 1.0
+        volume = volume / 100.0
+        self.audio_output.setVolume(volume)
+        if volume == 0.0:
+            self.volumeBtn.setIcon(self.volumeOffIcon)
+        elif volume < 0.5:
+            self.audio_output.setMuted(False)
+            self.volumeBtn.setIcon(self.volumeLowIcon)
+        else:
+            self.volumeBtn.setIcon(self.volumeHighIcon)
+            self.audio_output.setMuted(False)
+    
+    def toggleMute(self):
+        if self.audio_output.isMuted():
+            self.audio_output.setMuted(False)
+            if self.current_volume >= 50:
+                self.volumeBtn.setIcon(self.volumeHighIcon)
+            elif self.current_volume < 50:
+                self.volumeBtn.setIcon(self.volumeLowIcon)
+            else:
+                self.volumeBtn.setIcon(self.volumeOffIcon)
+            self.volumeBar.setValue(self.current_volume)
+        else:
+            self.audio_output.setMuted(True)
+            self.volumeBtn.setIcon(self.muteIcon)
+            self.current_volume = self.volumeBar.value()
+            self.volumeBar.setValue(0)
+    
+    def togglePlay(self):
+        if self.player.playbackState() == QMediaPlayer.PlaybackState.PlayingState:
+            self.player.pause()
+            self.playBtn.setIcon(self.playIcon)
+        else:
+            self.player.play()
+            self.playBtn.setIcon(self.pauseIcon)
+
+    def formatTime(self, milliseconds):
+        total_seconds = milliseconds // 1000
+        hours, remainder = divmod(total_seconds, 3600)
+        minutes, seconds = divmod(remainder, 60)
+        return f"{hours:02}:{minutes:02}:{seconds:02}"
+
+    def next_song(self):
+        if not self.current_playlist:
+            msg = Alert()
+            msg.error_message("No playlist is currently loaded")
+            return
+            
+        if self.current_song_index < len(self.current_playlist) - 1:
+            next_song = self.current_playlist[self.current_song_index + 1]
+            self.play_song(next_song['id'])
+        else:
+            # Loop back to the start of the playlist
+            first_song = self.current_playlist[0]
+            self.play_song(first_song['id'])
+
+    def previous_song(self):
+        if not self.current_playlist:
+            msg = Alert()
+            msg.error_message("No playlist is currently loaded")
+            return
+            
+        if self.current_song_index > 0:
+            prev_song = self.current_playlist[self.current_song_index - 1]
+            self.play_song(prev_song['id'])
+        else:
+            # Go to the last song in the playlist
+            last_song = self.current_playlist[-1]
+            self.play_song(last_song['id'])
 
 if __name__ == "__main__":
     app = QApplication([])

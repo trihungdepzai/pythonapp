@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PlaylistItem</class>
+ <widget class="QWidget" name="PlaylistItem">
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>56</height>
+   </size>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <widget class="QLabel" name="lbl_img">
+     <property name="minimumSize">
+      <size>
+       <width>48</width>
+       <height>48</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>48</width>
+       <height>48</height>
+      </size>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 6px; background: #222;</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="lbl_name">
+     <property name="styleSheet">
+      <string notr="true">color: #fff; font-size: 10.5pt; font-weight: bold; background: none; margin-left: 8px;</string>
+     </property>
+     <property name="minimumWidth">
+      <number>100</number>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignVCenter|Qt::AlignLeft</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="lbl_artist">
+     <property name="styleSheet">
+      <string notr="true">color: #b3b3b3; font-size: 9pt; background: none; margin-left: 8px;</string>
+     </property>
+     <property name="minimumWidth">
+      <number>80</number>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignVCenter|Qt::AlignLeft</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="spacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btn_play">
+     <property name="styleSheet">
+      <string notr="true">background: none; border: none;</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../img/circle-play-solid.svg</normaloff>../img/circle-play-solid.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btn_delete">
+     <property name="styleSheet">
+      <string notr="true">background: none; border: none; color: #ff4d4f; font-weight: bold; font-size: 10pt; padding: 2px 10px; margin-left: 6px;</string>
+     </property>
+     <property name="text">
+      <string>Xoá</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui> 

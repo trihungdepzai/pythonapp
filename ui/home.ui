@@ -28,7 +28,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="home">
      <widget class="QLabel" name="label_3">
@@ -197,7 +197,7 @@ background: none;</string>
        <rect>
         <x>19</x>
         <y>99</y>
-        <width>1041</width>
+        <width>1021</width>
         <height>371</height>
        </rect>
       </property>
@@ -282,19 +282,15 @@ background: none</string>
        </size>
       </property>
      </widget>
-     <widget class="QWidget" name="gridWidget" native="true">
+     <widget class="QWidget" name="playlist_container" native="true">
       <property name="geometry">
        <rect>
-        <x>80</x>
-        <y>130</y>
-        <width>951</width>
-        <height>331</height>
+        <x>40</x>
+        <y>100</y>
+        <width>1001</width>
+        <height>361</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">background: none</string>
-      </property>
-      <layout class="QGridLayout" name="gridLayout_2"/>
      </widget>
     </widget>
     <widget class="QWidget" name="account">

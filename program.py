@@ -6,6 +6,7 @@ from PyQt6 import uic
 from PyQt6.QtMultimedia import *
 import sys
 from database import *
+from PyQt6.QtCore import pyqtSignal
 
 class MessageBox():
     def success_box(self,message):
@@ -204,71 +205,82 @@ class SongItemWidget(QWidget):
             self.btn_playlist.setText("Add")
             self.btn_playlist.setProperty("class", "")
 
+class PlaylistItemWidget(QWidget):
+    play_song = pyqtSignal(str)
+    delete_song = pyqtSignal(str)
+
+    def __init__(self, song_id, song_name, image_path, artist_names):
+        super().__init__()
+        uic.loadUi("ui/playlist.ui", self)
+        self.song_id = song_id
+        self.song_name = song_name
+        self.image_path = image_path
+        self.artist_names = artist_names
+
+        self.lbl_name = self.findChild(QLabel, "lbl_name")
+        self.lbl_artist = self.findChild(QLabel, "lbl_artist")
+        self.lbl_img = self.findChild(QLabel, "lbl_img")
+        self.btn_play = self.findChild(QPushButton, "btn_play")
+        self.btn_delete = self.findChild(QPushButton, "btn_delete")
+
+        self.lbl_name.setText(self.song_name)
+        self.lbl_artist.setText(self.artist_names)
+        pixmap = QPixmap(self.image_path.replace("/", "\\"))
+        if not pixmap.isNull():
+            self.lbl_img.setPixmap(pixmap.scaled(self.lbl_img.size(), Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation))
+        else:
+            self.lbl_img.setText("")
+
+        self.btn_play.clicked.connect(self.on_play)
+        self.btn_delete.clicked.connect(self.on_delete)
+
+    def on_play(self):
+        self.play_song.emit(str(self.song_id))
+
+    def on_delete(self):
+        self.delete_song.emit(str(self.song_id))
+
 class PlaylistWidget(QWidget):
-    play_song_signal = pyqtSignal(str)  # Add signal at class level
-    
+    play_song_signal = pyqtSignal(str)
+
     def __init__(self, user_id):
         super().__init__()
         self.user_id = user_id
-        
-        # Create layout
         self.layout = QVBoxLayout(self)
         self.layout.setContentsMargins(0, 0, 0, 0)
-        
-        # Create scroll area
         self.scroll_area = QScrollArea()
         self.scroll_area.setWidgetResizable(True)
         self.scroll_area.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        
-        # Create container for songs
         self.songs_container = QWidget()
-        self.songs_layout = QGridLayout(self.songs_container)
-        self.songs_layout.setSpacing(20)
-        self.songs_layout.setContentsMargins(20, 20, 20, 20)
-        self.songs_layout.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignTop)
-        
-        # Setup scroll area
+        self.songs_layout = QVBoxLayout(self.songs_container)
+        self.songs_layout.setSpacing(8)
+        self.songs_layout.setContentsMargins(8, 8, 8, 8)
+        self.songs_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
         self.scroll_area.setWidget(self.songs_container)
         self.layout.addWidget(self.scroll_area)
-        
-        # Load initial songs
         self.load_songs()
-    
+
     def load_songs(self):
         # Clear existing widgets
         for i in reversed(range(self.songs_layout.count())):
-            self.songs_layout.itemAt(i).widget().setParent(None)
-            
+            widget = self.songs_layout.itemAt(i).widget()
+            if widget is not None:
+                self.songs_layout.removeWidget(widget)
+                widget.setParent(None)
         # Get user's playlist songs
-        songs =  get_user_playlist_songs(self.user_id)
-        
-        # Add songs to the layout in 2 columns
-        row = 0
-        col = 0
+        songs = get_user_playlist_songs(self.user_id)
         for song in songs:
-            # Create widget in playlist mode (Remove button only)
-            item = SongItemWidget(song['id'], song['name'], song['image_path'].replace("/", "\\"), song['artist_names'], is_playlist_mode=True)
-            item.setFixedSize(400, 80)  # Set fixed size for each item
-            item.play_song.connect(self.on_play_song)  # Connect to intermediate handler
-            item.remove_song_from_playlist.connect(self.remove_song)
-            self.songs_layout.addWidget(item, row, col)
-            col += 1
-            if col == 2:  # Show 2 columns
-                col = 0
-                row += 1
-        
-        # Add stretch to push items to the top-left
-        self.songs_layout.setRowStretch(row + 1, 1)
-    
+            item = PlaylistItemWidget(song['id'], song['name'], song['image_path'], song['artist_names'])
+            item.play_song.connect(self.on_play_song)
+            item.delete_song.connect(self.on_delete_song)
+            self.songs_layout.addWidget(item)
+
     def on_play_song(self, song_id):
-        # Emit signal to parent
         self.play_song_signal.emit(song_id)
-    
-    def remove_song(self, song_id):
+
+    def on_delete_song(self, song_id):
         remove_song_from_user_playlist(self.user_id, song_id)
-        self.load_songs()  # Refresh the view
-
-
+        self.load_songs()
 class Home(QMainWindow):
     play_song_signal = pyqtSignal(str)  # Add signal at class level
 
@@ -331,7 +343,7 @@ class Home(QMainWindow):
         scroll_layout.addWidget(self.scroll_area)
         
         # Setup playlist container
-        self.playlist_container = self.findChild(QWidget, 'playlist_widget')
+        self.playlist_container = self.findChild(QWidget, 'playlist_container')
         self.playlist_widget = PlaylistWidget(self.user_id)
         self.playlist_widget.play_song_signal.connect(self.play_song)  # Connect playlist signal
         playlist_layout = QVBoxLayout(self.playlist_container)

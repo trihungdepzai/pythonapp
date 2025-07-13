@@ -18,7 +18,7 @@
 border-radius: 20px
 </string>
   </property>
-  <widget class="QLabel" name="lb_pic">
+  <widget class="QLabel" name="lbl_image">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -31,7 +31,7 @@ border-radius: 20px
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="lb_songname">
+  <widget class="QLabel" name="lbl_name">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -48,7 +48,7 @@ background-color: none</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="lb_athname">
+  <widget class="QLabel" name="lbl_artist">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -65,7 +65,7 @@ background-color: none</string>
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="bt_like">
+  <widget class="QPushButton" name="btn_add">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -82,7 +82,7 @@ background-color: none</string>
      <normaloff>../img/heart-regular.svg</normaloff>../img/heart-regular.svg</iconset>
    </property>
   </widget>
-  <widget class="QPushButton" name="bt_start">
+  <widget class="QPushButton" name="btn_play">
    <property name="geometry">
     <rect>
      <x>140</x>

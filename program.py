@@ -185,7 +185,7 @@ class SongItemWidget(QWidget):
         self.setup_playlist_button()
         
         # Set minimum size
-        # self.setMinimumSize(400, 80)
+        self.setMinimumSize(191, 262)
     
     def play(self):
         self.play_song.emit(str(self.song_id))
@@ -399,30 +399,38 @@ class Home(QMainWindow):
         self.audio_output.setVolume(0.5)
         self.current_volume = 50
 
-    def load_initial_songs(self):
-        # Clear existing widgets
-        for i in reversed(range(self.song_layout.count())):
-            self.song_layout.itemAt(i).widget().setParent(None)
-            
-        # Get first 15 songs
-        songs = get_first_15_songs()
-        print(songs)
-        
-        # Add songs to the layout in 2 columns
+    def clear_song_layout(self, layout):
+        for i in reversed(range(layout.count())):
+            widget = layout.itemAt(i).widget()
+            if widget is not None:
+                layout.removeWidget(widget)
+                widget.setParent(None)
+
+    def add_songs_to_layout(self, song_list, layout, columns=3, is_playlist_mode=False):
         row = 0
         col = 0
-        for song in songs:
-            item = SongItemWidget(song['id'], song['name'], song['image_path'].replace("/", "\\"), song['artist_names'], is_playlist_mode=False)
-            item.setFixedSize(191, 201)  # Match the size in song.ui
+        for song in song_list:
+            item = SongItemWidget(
+                song['id'],
+                song['name'],
+                song['image_path'].replace("/", "\\"),
+                song['artist_names'],
+                is_playlist_mode=is_playlist_mode
+            )
+            item.setFixedSize(191, 262)
             item.play_song.connect(self.play_song)
             item.add_song_to_playlist.connect(self.add_to_playlist)
             item.remove_song_from_playlist.connect(self.remove_from_playlist)
-            self.song_layout.addWidget(item, row, col)
-            print(f"Added song widget for: {song['name']}")  # Debug print
+            layout.addWidget(item, row, col)
             col += 1
-            if col == 2:  # Show 2 columns
+            if col == columns:
                 col = 0
                 row += 1
+
+    def load_initial_songs(self):
+        self.clear_song_layout(self.song_layout)
+        songs = get_first_15_songs()
+        self.add_songs_to_layout(songs, self.song_layout, columns=4, is_playlist_mode=False)
 
     def navMainScreen(self, index):
         self.main_widget.setCurrentIndex(index)
@@ -513,25 +521,8 @@ class Home(QMainWindow):
         self.msg.success_box("Cập nhật thông tin thành công")
         
     def render_song_list(self, song_list:list):
-        # clear the grid layout
-        for i in reversed(range(self.song_layout.count())):
-            widgetToRemove = self.song_layout.itemAt(i).widget()
-            self.song_layout.removeWidget(widgetToRemove)
-            widgetToRemove.setParent(None)
-            
-        row = 0
-        column = 0
-        for song in song_list:
-            # Create widget in song list mode (Add button only)
-            itemWidget = SongItemWidget(song["id"], song["name"], song["image_path"].replace("/", "\\"), song["artist_names"], is_playlist_mode=False)
-            itemWidget.setFixedSize(400, 80)  # Set fixed size for each item
-            itemWidget.play_song.connect(self.play_song)
-            itemWidget.add_song_to_playlist.connect(self.add_to_playlist)
-            self.song_layout.addWidget(itemWidget, row, column)
-            column += 1
-            if column == 2:  # Show 2 columns
-                column = 0
-                row += 1
+        self.clear_song_layout(self.song_layout)
+        self.add_songs_to_layout(song_list, self.song_layout, columns=3, is_playlist_mode=False)
         
     def search_song(self):
         name = self.txt_search.text()

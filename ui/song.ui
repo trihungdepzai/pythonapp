@@ -2,115 +2,149 @@
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
+  <property name="minimumSize">
+   <size>
     <width>191</width>
-    <height>201</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>Form</string>
+    <height>240</height>
+   </size>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(0, 0, 0);
-border-radius: 20px
-</string>
+   <string notr="true">
+    background-color: #181818;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+   </string>
   </property>
-  <widget class="QLabel" name="lbl_image">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>10</y>
-     <width>151</width>
-     <height>151</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lbl_name">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>170</y>
-     <width>81</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);
-background-color: none</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lbl_artist">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>183</y>
-     <width>81</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);
-background-color: none</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="btn_add">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>170</y>
-     <width>31</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>../img/heart-regular.svg</normaloff>../img/heart-regular.svg</iconset>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="btn_play">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>165</y>
-     <width>31</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>24</height>
-    </size>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>../img/circle-play-solid.svg</normaloff>../img/circle-play-solid.svg</iconset>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>30</width>
-     <height>30</height>
-    </size>
-   </property>
-  </widget>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="lbl_image">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumHeight">
+      <number>140</number>
+     </property>
+     <property name="maximumHeight">
+      <number>140</number>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 8px; background: #222;</string>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="spacer_img_text">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>2</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QLabel" name="lbl_name">
+     <property name="styleSheet">
+      <string notr="true">color: #fff; font-size: 11pt; font-weight: bold; background: none; margin: 0; padding: 0;</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="lbl_artist">
+     <property name="styleSheet">
+      <string notr="true">color: #b3b3b3; font-size: 9pt; background: none; margin: 0; padding: 0;</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="spacer_text_btn">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>2</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="buttonLayout">
+     <item>
+      <spacer name="spacer_btn_left">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_add">
+       <property name="styleSheet">
+        <string notr="true">background: none; border: none; color: #fff; font-size: 10pt; padding: 0;</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../img/heart-regular.svg</normaloff>../img/heart-regular.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_play">
+       <property name="styleSheet">
+        <string notr="true">background: none; border: none; padding: 0;</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../img/circle-play-solid.svg</normaloff>../img/circle-play-solid.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

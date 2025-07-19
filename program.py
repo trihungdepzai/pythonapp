@@ -632,6 +632,7 @@ class Home(QMainWindow):
             self.volumeBar.setValue(0)
     
     def togglePlay(self):
+        print("tessttttt")
         if self.player.playbackState() == QMediaPlayer.PlaybackState.PlayingState:
             self.player.pause()
             self.playBtn.setIcon(self.playIcon)

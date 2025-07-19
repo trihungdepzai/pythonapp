@@ -7,6 +7,19 @@ from PyQt6.QtMultimedia import *
 import sys
 from database import *
 from PyQt6.QtCore import pyqtSignal
+import os
+
+def normalize_path(path):
+    # Convert path separators to system-specific format
+    normalized = os.path.normpath(path)
+    # Check if path exists, if not try to find it relative to current directory
+    if not os.path.exists(normalized):
+        # Try relative to current directory
+        relative_path = os.path.join(os.getcwd(), normalized)
+        if os.path.exists(relative_path):
+            return relative_path
+    return normalized
+
 
 class MessageBox():
     def success_box(self,message):
@@ -176,7 +189,7 @@ class SongItemWidget(QWidget):
         # Set initial values
         self.name.setText(self.song_name)
         self.artist.setText(self.artist_names)
-        self.image.setPixmap(QPixmap(self.image_path.replace("/", "\\")))
+        self.image.setPixmap(QPixmap(normalize_path(self.image_path)))
         
         # Connect signals
         self.btn_play.clicked.connect(self.play)
@@ -225,7 +238,7 @@ class PlaylistItemWidget(QWidget):
 
         self.lbl_name.setText(self.song_name)
         self.lbl_artist.setText(self.artist_names)
-        pixmap = QPixmap(self.image_path.replace("/", "\\"))
+        pixmap = QPixmap(normalize_path(self.image_path))
         if not pixmap.isNull():
             self.lbl_img.setPixmap(pixmap.scaled(self.lbl_img.size(), Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation))
         else:
@@ -313,13 +326,30 @@ class Home(QMainWindow):
         self.load_initial_songs()
         
     def setup_audio_ui(self):
+        # 1. Khởi tạo player
+        self.player = QMediaPlayer()
+        self.audio_output = QAudioOutput()
+        self.player.setAudioOutput(self.audio_output)
+        
+        # 2. Connect signal ngay lập tức
+        self.player.playbackStateChanged.connect(self.mediaStateChanged)
+        self.player.errorOccurred.connect(self.handle_player_error)
+        self.player.positionChanged.connect(self.positionChanged)
+        self.player.durationChanged.connect(self.durationChanged)
+        
+        # 3. Khởi tạo UI elements
+        self.playBtn = self.findChild(QPushButton, "btn_play")
+        self.volumeBtn = self.findChild(QPushButton, "btn_volume")
+        self.volumeBar = self.findChild(QSlider, "slider_volume")
+        self.durationBar = self.findChild(QSlider, "slider_duration")
+        self.timeLabel = self.findChild(QLabel, "lbl_time")
+        self.curr_name = self.findChild(QLabel, "lbl_curr_name")
+        self.curr_img = self.findChild(QLabel, "lbl_curr_img")
+        self.curr_artist = self.findChild(QLabel, "lbl_curr_artist")
+        
         # Find player control buttons
         self.btn_prev_song = self.findChild(QPushButton, 'btn_prev_song')
         self.btn_next_song = self.findChild(QPushButton, 'btn_next_song')
-        
-        # Connect player control buttons
-        self.btn_prev_song.clicked.connect(self.previous_song)
-        self.btn_next_song.clicked.connect(self.next_song)
         
         # Setup song container with scroll area
         self.btn_search = self.findChild(QPushButton, 'btn_search')
@@ -350,34 +380,6 @@ class Home(QMainWindow):
         playlist_layout.setContentsMargins(0, 0, 0, 0)
         playlist_layout.addWidget(self.playlist_widget)
         
-        # Connect signals
-        self.btn_search.clicked.connect(self.search_song)
-        
-        # Initialize media player
-        self.player = QMediaPlayer()
-        self.audio_output = QAudioOutput()
-        self.player.setAudioOutput(self.audio_output)
-        
-        # Initialize playlist and current index
-        self.current_playlist = get_user_playlist_songs(self.user_id)
-        self.current_song_index = -1
-        
-        # Connect player signals
-        self.player.errorOccurred.connect(self.handle_player_error)
-        self.player.playbackStateChanged.connect(self.mediaStateChanged)
-        self.player.positionChanged.connect(self.positionChanged)
-        self.player.durationChanged.connect(self.durationChanged)
-        
-        # Initialize UI elements
-        self.playBtn = self.findChild(QPushButton, "btn_play")
-        self.volumeBtn = self.findChild(QPushButton, "btn_volume")
-        self.volumeBar = self.findChild(QSlider, "slider_volume")
-        self.durationBar = self.findChild(QSlider, "slider_duration")
-        self.timeLabel = self.findChild(QLabel, "lbl_time")
-        self.curr_name = self.findChild(QLabel, "lbl_curr_name")
-        self.curr_img = self.findChild(QLabel, "lbl_curr_img")
-        self.curr_artist = self.findChild(QLabel, "lbl_curr_artist")
-        
         # Initialize icons
         try:
             self.playIcon = QIcon("img/play-solid.svg")
@@ -395,7 +397,15 @@ class Home(QMainWindow):
             self.volumeOffIcon = None
             self.muteIcon = None
         
-        # Set initial volume
+        # 4. Setup controls
+        # Connect player control buttons
+        self.btn_prev_song.clicked.connect(self.previous_song)
+        self.btn_next_song.clicked.connect(self.next_song)
+        
+        # Connect search signal
+        self.btn_search.clicked.connect(self.search_song)
+        
+        # Setup player controls
         self.playBtn.setIcon(self.playIcon)
         self.playBtn.clicked.connect(self.togglePlay)
         self.volumeBtn.setIcon(self.volumeOffIcon)
@@ -403,13 +413,16 @@ class Home(QMainWindow):
 
         self.volumeBar.valueChanged.connect(self.setVolume)
         self.durationBar.sliderMoved.connect(self.setPosition)
-        self.player.positionChanged.connect(self.positionChanged)
-        self.player.durationChanged.connect(self.durationChanged)
-        self.player.playbackStateChanged.connect(self.mediaStateChanged)
+        
+        # Set initial values
         self.volumeBar.setValue(50)
         self.durationBar.setValue(0)
         self.audio_output.setVolume(0.5)
         self.current_volume = 50
+        
+        # Initialize playlist and current index
+        self.current_playlist = get_user_playlist_songs(self.user_id)
+        self.current_song_index = -1
 
     def clear_song_layout(self, layout):
         for i in reversed(range(layout.count())):
@@ -425,7 +438,7 @@ class Home(QMainWindow):
             item = SongItemWidget(
                 song['id'],
                 song['name'],
-                song['image_path'].replace("/", "\\"),
+                normalize_path( song['image_path']),
                 song['artist_names'],
                 is_playlist_mode=is_playlist_mode
             )
@@ -554,7 +567,7 @@ class Home(QMainWindow):
         
         self.current_song = song_id
         song = get_song_by_id(song_id)
-        file_path = QUrl.fromLocalFile(song["file_path"].replace("/", "\\"))
+        file_path = QUrl.fromLocalFile(normalize_path(song["file_path"]))
         self.player.setSource(file_path)
         self.player.play()
         
@@ -564,7 +577,7 @@ class Home(QMainWindow):
             self.playBtn.setText("Pause")
         
         self.curr_name.setText(f"Now playing: {song['name']}")
-        self.curr_img.setPixmap(QPixmap(song["image_path"].replace("/", "\\")))
+        self.curr_img.setPixmap(QPixmap(normalize_path(song["image_path"])))
         self.curr_artist.setText(f"Artist: {song['artist_names']}")
         
     def handle_player_error(self, error, error_string):
@@ -632,13 +645,12 @@ class Home(QMainWindow):
             self.volumeBar.setValue(0)
     
     def togglePlay(self):
-        print("tessttttt")
-        if self.player.playbackState() == QMediaPlayer.PlaybackState.PlayingState:
+        current_state = self.player.playbackState()
+        
+        if current_state == QMediaPlayer.PlaybackState.PlayingState:
             self.player.pause()
-            self.playBtn.setIcon(self.playIcon)
         else:
             self.player.play()
-            self.playBtn.setIcon(self.pauseIcon)
 
     def formatTime(self, milliseconds):
         total_seconds = milliseconds // 1000

@@ -17,7 +17,7 @@ class Ui_Form(object):
 "    background-color: #181818;\n"
 "    border-radius: 12px;\n"
 "    box-shadow: 0 2px 8px rgba(0,0,0,0.12);\n"
-"   ")
+"")
         self.verticalLayout = QtWidgets.QVBoxLayout(Form)
         self.verticalLayout.setObjectName("verticalLayout")
         self.lbl_image = QtWidgets.QLabel(parent=Form)

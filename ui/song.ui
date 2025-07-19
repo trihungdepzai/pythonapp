@@ -13,11 +13,11 @@
     background-color: #181818;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-   </string>
+</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLabel" name="lbl_image">
+  <widget class="QLabel" name="lbl_image">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -35,11 +35,11 @@
      </property>
      <property name="styleSheet">
       <string notr="true">border-radius: 8px; background: #222;</string>
-     </property>
+   </property>
      <property name="scaledContents">
       <bool>true</bool>
-     </property>
-    </widget>
+   </property>
+  </widget>
    </item>
    <item>
     <spacer name="spacer_img_text">
@@ -55,24 +55,24 @@
     </spacer>
    </item>
    <item>
-    <widget class="QLabel" name="lbl_name">
-     <property name="styleSheet">
+  <widget class="QLabel" name="lbl_name">
+   <property name="styleSheet">
       <string notr="true">color: #fff; font-size: 11pt; font-weight: bold; background: none; margin: 0; padding: 0;</string>
-     </property>
+   </property>
      <property name="alignment">
       <set>Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-    </widget>
+   </property>
+  </widget>
    </item>
    <item>
-    <widget class="QLabel" name="lbl_artist">
-     <property name="styleSheet">
+  <widget class="QLabel" name="lbl_artist">
+   <property name="styleSheet">
       <string notr="true">color: #b3b3b3; font-size: 9pt; background: none; margin: 0; padding: 0;</string>
-     </property>
+   </property>
      <property name="alignment">
       <set>Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-    </widget>
+   </property>
+  </widget>
    </item>
    <item>
     <spacer name="spacer_text_btn">
@@ -103,23 +103,23 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="btn_add">
+  <widget class="QPushButton" name="btn_add">
        <property name="styleSheet">
         <string notr="true">background: none; border: none; color: #fff; font-size: 10pt; padding: 0;</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>../img/heart-regular.svg</normaloff>../img/heart-regular.svg</iconset>
-       </property>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../img/heart-regular.svg</normaloff>../img/heart-regular.svg</iconset>
+   </property>
        <property name="iconSize">
-        <size>
+    <size>
          <width>22</width>
          <height>22</height>
-        </size>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
+    </size>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
       </widget>
      </item>
      <item>
@@ -127,20 +127,20 @@
        <property name="styleSheet">
         <string notr="true">background: none; border: none; padding: 0;</string>
        </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>../img/circle-play-solid.svg</normaloff>../img/circle-play-solid.svg</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
+   <property name="icon">
+    <iconset>
+     <normaloff>../img/circle-play-solid.svg</normaloff>../img/circle-play-solid.svg</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
          <width>22</width>
          <height>22</height>
-        </size>
-       </property>
+    </size>
+   </property>
        <property name="text">
         <string/>
        </property>
-      </widget>
+  </widget>
      </item>
     </layout>
    </item>
